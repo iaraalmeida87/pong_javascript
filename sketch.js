@@ -98,8 +98,12 @@ function colisaoRaqueteBiblioteca(x, y) {
   }
 }
 function movimentoRaqueteOponente() {
-  velocidadeYOponente = yBolinha - yRaqueteOponente - larguraRaquete / 2 - 30;
-  yRaqueteOponente += velocidadeYOponente;
+  if (keyIsDown(87)) {
+    yRaqueteOponente -= 10;
+  }
+  if (keyIsDown(83)) {
+    yRaqueteOponente += 10;
+  }
 }
 function incluiPlacar() {
   stroke(255);
