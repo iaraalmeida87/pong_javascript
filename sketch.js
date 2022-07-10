@@ -25,8 +25,19 @@ let pontosDoOponente = 0;
 
 let colidiu = false;
 
+//sons do jogo
+let raquetada;
+let ponto;
+let trilha;
+
+function preload() {
+  trilha = loadSound("trilha.wav");
+  ponto = loadSound("ponto.wav");
+  raquetada = loadSound("raquetada.wav");
+}
 function setup() {
   createCanvas(600, 400);
+  trilha.loop();
 }
 function draw() {
   background(38, 0, 77);
@@ -53,12 +64,12 @@ function movimentaBolinha() {
 }
 function verificaColisaoBorda() {
   if (xBolinha+raio > width ||
-     xBolinha-raio < 0) {
-     velocidadeXBolinha *= -1;
+    xBolinha-raio < 0) {
+    velocidadeXBolinha *= -1;
   }
   if (yBolinha+raio > height ||
-     yBolinha-raio < 0) {
-     velocidadeYBolinha *= -1;
+    yBolinha-raio < 0) {
+    velocidadeYBolinha *= -1;
   }
 }
 function mostraRaquete(x, y) {
@@ -74,14 +85,16 @@ function movimentoRaquete() {
   }
 }
 function verificaColisaoRaquete() {
-    if (xBolinha - raio < xRaquete + larguraRaquete && yBolinha - raio < yRaquete + alturaRaquete && yBolinha + raio > yRaquete) {
-      velocidadeXBolinha *= -1;
-    }
+  if (xBolinha - raio < xRaquete + larguraRaquete && yBolinha - raio < yRaquete + alturaRaquete && yBolinha + raio > yRaquete) {
+    velocidadeXBolinha *= -1;
+    raquetada.play();
+  }
 }
 function colisaoRaqueteBiblioteca(x, y) {
   colidiu = collideRectCircle(x, y, larguraRaquete, alturaRaquete, xBolinha, yBolinha, raio);
   if (colidiu) {
     velocidadeXBolinha *= -1;
+    raquetada.play();
   }
 }
 function movimentoRaqueteOponente() {
@@ -103,9 +116,11 @@ function incluiPlacar() {
 }
 function marcaPonto() {
   if (xBolinha > 590) {
-      pontosUsuario += 1;
+    pontosUsuario += 1;
+    ponto.play();
   }
   if (xBolinha < 10) {
-      pontosDoOponente += 1;
+    pontosDoOponente += 1;
+    ponto.play();
   }
 }
