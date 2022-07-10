@@ -53,6 +53,7 @@ function draw() {
   colisaoRaqueteBiblioteca(xRaqueteOponente, yRaqueteOponente);
   incluiPlacar();
   marcaPonto();
+  bolinhaNaoFicaPresa();
 }
 function mostraBolinha() {
   fill(color(230, 46, 0));
@@ -126,5 +127,10 @@ function marcaPonto() {
   if (xBolinha < 10) {
     pontosDoOponente += 1;
     ponto.play();
+  }
+}
+function bolinhaNaoFicaPresa(){
+  if (XBolinha - raio < 0){
+  XBolinha = 23
   }
 }
