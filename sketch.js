@@ -1,7 +1,7 @@
 //variáveis da bolinha
 let xBolinha = 300;
 let yBolinha = 200;
-let diametro = 22;
+let diametro = 15;
 let raio = diametro / 2;
 
 //velocidade da bolinha
@@ -11,7 +11,7 @@ let velocidadeYBolinha = 6;
 //variáveis da raquete
 let xRaquete = 2;
 let yRaquete = 150;
-let larguraRaquete = 10;
+let larguraRaquete = 7;
 let alturaRaquete = 90;
 
 //variáveis da raquete do oponente
@@ -87,9 +87,17 @@ function movimentoRaqueteOponente() {
   yRaqueteOponente += velocidadeYOponente;
 }
 function incluiPlacar() {
+  stroke(255);
+  textAlign(CENTER);
+  textSize(16);
+  fill(color(255, 140, 0));
+  rect(150, 10, 40, 20);
   fill(255);
-  text(pontosUsuario, 278, 26);
-  text(pontosDoOponente, 321, 26);
+  text(pontosUsuario, 170, 26);
+  fill(color(255, 140, 0));
+  rect(450, 10, 40, 20);
+  fill(255);
+  text(pontosDoOponente, 470, 26);
 }
 function marcaPonto() {
   if (xBolinha > 590) {
